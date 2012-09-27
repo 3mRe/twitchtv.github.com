@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Getting Technical</title>
+  <title>Broadcasting SDK - Getting Technical</title>
   <meta name="author" content="TwitchTV">
 
   
@@ -23,7 +23,7 @@ the pipeline to change our growth curve. The existing streaming tools are diffic
 =======
   
 >>>>>>> 96f8cb1515beaa4bed4d60ecf59883759b2db5bf
-  <link rel="canonical" href="http://twitchtv.github.com">
+  <link rel="canonical" href="http://twitchtv.github.com/blog/2012/09/25/broadcasting-sdk">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,15 +67,12 @@ the pipeline to change our growth curve. The existing streaming tools are diffic
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/25/broadcasting-sdk/">Broadcasting SDK</a></h1>
+      <h1 class="entry-title">Broadcasting SDK</h1>
     
     
       <p class="meta">
@@ -93,86 +90,61 @@ the pipeline to change our growth curve. The existing streaming tools are diffic
 
 <time datetime="2012-09-25T21:51:00-07:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/09/25/broadcasting-sdk/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Twitch is <a href="http://www.businessinsider.com/one-year-later-after-twitchtv-2012-8">flourishing</a>, but we have projects in
+<div class="entry-content"><p>Twitch is <a href="http://www.businessinsider.com/one-year-later-after-twitchtv-2012-8">flourishing</a>, but we have projects in
 the pipeline to change our growth curve. The existing streaming tools are difficult to use and require expensive gaming
 rigs or additional hardware. The goal of our SDK is to integrate streaming into games, dramatically lowering the
 activation energy to broadcast.</p>
 
+<!-- more -->
+
+
+<p>Partnerships have been easier to make than we initially planned for. The gaming industry is forward thinking and
+excited about successes in free to play, mobile, and social gaming. They believe streaming is the next big thing in
+gaming. Paradox recently announced their <a href="http://www.businesswire.com/news/home/20120604006646/en">plans</a> to integrate,
+and we have several other deals we are very excited about in the works.</p>
+
+<p>A primary design goal of the SDK is to make it very easy for the game developers to integrate into their games. We have
+built a simple C-style API with just a handful of functions. Current count 17 functions. 3-5 Man days is the current
+estimate from our Beta-Partners as to how long it takes to integrate streaming into a game.</p>
+
+<ul>
+<li>Handles authentication and obtaining a stream key from the Twitch servers</li>
+<li>Fetches an list of available ingest servers</li>
+<li>Provides optimal settings (e.g. bitrate, resolution) to game based on available bandwidth</li>
+<li>Game submits its frame buffer to the SDK, which encodes and streams it Twitch</li>
+<li>Capture microphone and speaker audio and mixing them</li>
+<li>Send metadata for discovery: Level, victories, champions, headshots, imagine the possibilites.</li>
+<li>Sets a trace level for debugging purposes</li>
+</ul>
+
+
+<p>It is critical that the SDK uses as few CPU cycles as possible, thus having minimal impact on the game performance.
+We have written our code with performance in mind and have (and will be) tweaking the settings of the encoders to
+achieve optimal performance. As an example, we rolled up our sleeves and wrote code to do color space conversion from
+RGB to YUV using Intel SSE (that&#8217;s bit by bit). This cut the time to do the color space conversion in half compared to
+the existing codec.</p>
+
+<p>Our current goal is to get our SDK integrated into one of our partners beta. Getting our product to the point where
+developers are willing to push it to their users is productive, and we are going to learn a ton once we are in the
+hands of real users. Exciting times.</p>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/09/25/broadcasting-sdk/">Read on &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/04/rspec-tech-talk/">RSpec Tech Talk</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Danny Hernandez</span></span>
 
-<time datetime="2012-07-04T20:14:00-07:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/07/04/rspec-tech-talk/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Midway through &#8216;10 we found our product market fit and with the increased usage, <a href="/blog/2012/05/30/a-transitional-year/">new focus</a>,
-and a real desire to building something massive we started a huge internal effort to increase code quality. Testing is a cornerstone
-of everything that we write now. RSpec has changed the format in which tests are to be expressed and recently we got together to
-share that information with all devs with the aim being that all new tests you write should be in the new format and convert the tests
-written in the old format when you come across them.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/07/04/rspec-tech-talk/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/03/mobile-analytics/">Different Features, Equal KPI&#8217;s</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -184,79 +156,46 @@ written in the old format when you come across them.</p>
   
 
 
-<time datetime="2012-07-03T14:53:00-07:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time>
-        
-         | <a href="/blog/2012/07/03/mobile-analytics/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last January we were really excited when Jorge joined Twitch to build us an Android app.  As a project manager a key question I helped answer was what to build for the initial release.  I pushed for a tight spec for the v1 Android, and I was excited to see how the spartan Android app’s numbers would stack up to the full featured IOS app.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/07/03/mobile-analytics/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2012-09-25T21:51:00-07:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/30/a-transitional-year/">A Transitional Year</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/product/'>Product</a>, <a class='category' href='/blog/categories/sdk/'>SDK</a>, <a class='category' href='/blog/categories/strategy/'>Strategy</a>
+  
+</span>
 
 
-<time datetime="2012-05-30T16:44:00-07:00" pubdate data-updated="true">May 30<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/05/30/a-transitional-year/#disqus_thread">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://twitchtv.github.com/blog/2012/09/25/broadcasting-sdk/" data-via="TwitchTV" data-counturl="http://twitchtv.github.com/blog/2012/09/25/broadcasting-sdk/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/07/04/rspec-tech-talk/" title="Previous Post: RSpec Tech Talk">&laquo; RSpec Tech Talk</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-  <div class="entry-content"><p>Next week is E3, which marks a year since we first launched TwitchTV. What a year it has been!
-This post serves to provide an answer to the question I field the most when out and about talking about
-what we do: &#8220;What is the difference between TwitchTV and JustinTV?&#8221;</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/30/a-transitional-year/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -272,7 +211,7 @@ what we do: &#8220;What is the difference between TwitchTV and JustinTV?&#8221;<
       </li>
     
       <li class="post">
-        <a href="/blog/2012/07/03/mobile-analytics/">Different Features, Equal KPI&#8217;s</a>
+        <a href="/blog/2012/07/03/mobile-analytics/">Different Features, Equal KPI's</a>
       </li>
     
       <li class="post">
@@ -286,7 +225,7 @@ what we do: &#8220;What is the difference between TwitchTV and JustinTV?&#8221;<
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -306,6 +245,7 @@ what we do: &#8220;What is the difference between TwitchTV and JustinTV?&#8221;<
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -320,7 +260,10 @@ what we do: &#8220;What is the difference between TwitchTV and JustinTV?&#8221;<
       var disqus_shortname = 'twitchtechblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://twitchtv.github.com/blog/2012/09/25/broadcasting-sdk/';
+        var disqus_url = 'http://twitchtv.github.com/blog/2012/09/25/broadcasting-sdk/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
